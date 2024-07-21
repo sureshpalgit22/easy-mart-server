@@ -1,15 +1,19 @@
 package com.easy_mart.landing.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.StatusType;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
 
 import com.easy_mart.landing.domain.Order;
+import com.easy_mart.landing.domain.OrderItem;
 import com.easy_mart.landing.exception.OrderException;
 import com.easy_mart.landing.repository.OrderRepository;
 
@@ -73,6 +77,29 @@ public class OrderServiceImpl implements OrderService{
 			throw new OrderException(e.getMessage());
 		}
 		
+	}
+
+	@Override
+	public List<OrderItem> getOrdersByUserName(String name) {
+		try {
+		
+		Assert.hasText(name, "user name should be needed");
+		List<OrderItem> orderItems=new ArrayList<>();
+
+		if(!name.isEmpty())
+		{
+			List<Order> orders=orderRepository.findByUserUsername(name);
+			if(Objects.nonNull(orderItems))
+			{
+			orderItems=orders.stream().flatMap(order->order.getOrderItems().stream()).collect(Collectors.toList());
+			}			
+		}
+		
+		return orderItems;
+		}catch(Exception e)
+		{
+			throw new OrderException(e.getMessage());
+		}
 	}
 
 }

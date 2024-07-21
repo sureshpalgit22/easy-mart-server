@@ -9,6 +9,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
@@ -19,6 +20,7 @@ import org.springframework.stereotype.Component;
 
 import com.easy_mart.builder.SuccessMessage;
 import com.easy_mart.landing.domain.Order;
+import com.easy_mart.landing.domain.OrderItem;
 import com.easy_mart.landing.domain.User;
 import com.easy_mart.landing.service.OrderService;
 
@@ -54,4 +56,11 @@ public class OrderEndPoint {
 		return   SuccessMessage.statusCode(Status.OK)
 			.message(message).build();
 	 }
+	 @GET
+	 @Path("/find-by-username")
+	 public List<OrderItem> getOrdersByUserName(@QueryParam("username") String username)
+	 {
+		 return orderService.getOrdersByUserName(username);
+	 }
+	 
 }

@@ -1,6 +1,10 @@
 package com.easy_mart.landing.service;
 
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -101,5 +105,36 @@ public class OrderServiceImpl implements OrderService{
 			throw new OrderException(e.getMessage());
 		}
 	}
+
+	@Override
+	public List<OrderItem> getOrdersWithinDateRange(String fromDate, String toDate) {
+		try {
+			
+			Assert.hasLength(fromDate,"fromDate can't be null");
+			Assert.hasLength(toDate,"toDate can't be null");
+		    DateTimeFormatter formatter = DateTimeFormatter.ISO_INSTANT;
+
+			List<OrderItem> orderItems=new ArrayList<>();
+
+		        Date from = Date.from(Instant.from(formatter.parse(fromDate)));
+		        Date to = Date.from(Instant.from(formatter.parse(toDate)));
+			
+			List<Order> orders=orderRepository.findByOrderDateBetween(from, to);
+			
+			if(Objects.nonNull(orders))
+			{
+				orderItems=orders.stream().flatMap(order->order.getOrderItems().stream()).collect(Collectors.toList());
+
+			}
+			return orderItems;
+		}
+		catch(Exception e)
+		{
+			throw new OrderException(e.getMessage());
+
+		}
+	}
+	
+	
 
 }

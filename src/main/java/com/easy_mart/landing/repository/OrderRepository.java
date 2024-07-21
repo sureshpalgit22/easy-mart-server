@@ -1,5 +1,6 @@
 package com.easy_mart.landing.repository;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
@@ -11,4 +12,5 @@ import com.easy_mart.landing.domain.Order;
 public interface OrderRepository extends MongoRepository<Order, String> {
 	
 	List<Order> findByUserUsername(String name);
+	List<Order>  findByOrderDateBetween(Date from,Date to);
 }

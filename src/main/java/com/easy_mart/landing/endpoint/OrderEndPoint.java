@@ -63,4 +63,12 @@ public class OrderEndPoint {
 		 return orderService.getOrdersByUserName(username);
 	 }
 	 
+	 @GET
+	 @Path("/order-details-within-range")
+	 public List<OrderItem> ordersWithinRange(@QueryParam("fromDate") String fromDate,@QueryParam("toDate") String toDate)
+	 {
+		return orderService.getOrdersWithinDateRange(fromDate, toDate);
+		 
+	 }
+	 
 }

@@ -14,6 +14,7 @@ public interface OrderService {
 	List<Order> getOrderDetails();
 	String deleteOrderDetailsById(String id);
 	List<OrderItem> getOrdersByUserName(String name);
+	List<OrderItem> getOrdersWithinDateRange(String fromDate,String toDate);
 
 	
 

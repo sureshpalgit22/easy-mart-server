@@ -3,9 +3,12 @@ package com.easy_mart.landing.service;
 import java.util.List;
 import java.util.Optional;
 
+import javax.ws.rs.core.Response;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.easy_mart.landing.domain.LoginResult;
 import com.easy_mart.landing.domain.User;
 import com.easy_mart.landing.exception.UserException;
 import com.easy_mart.landing.repository.UserRepository;
@@ -55,7 +58,7 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public User saveUser(User user) {
-        return userRepository.save(user);
+    	        return userRepository.save(user);
     }
 
     /**
@@ -70,5 +73,25 @@ public class UserServiceImpl implements UserService {
             throw new UserException("User not found with id: " + id);
         }
         userRepository.deleteById(id);
+    }
+
+    @Override
+    public LoginResult checkUserLogin(String userEmailOrMobileNumber, String password) {
+        List<User> userList = userRepository.findAll();
+        for (User user : userList) {
+            if ((user.getEmail().equals(userEmailOrMobileNumber) || user.getMobileNumber().equals(userEmailOrMobileNumber)) && user.getPassword().equals(password)) {
+                return LoginResult.SUCCESS;
+            }
+        }
+        
+        if (!isValidEmailOrMobileNumber(userEmailOrMobileNumber)) {
+            return LoginResult.INVALID_EMAIL_OR_MOBILE_NUMBER;
+        } else {
+            return LoginResult.INVALID_PASSWORD;
+        }
+    }
+
+    private boolean isValidEmailOrMobileNumber(String input) {
+        return input.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$") || input.matches("^\\d{10}$");
     }
 }

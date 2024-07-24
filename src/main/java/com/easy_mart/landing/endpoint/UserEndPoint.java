@@ -2,6 +2,7 @@ package com.easy_mart.landing.endpoint;
 
 import org.springframework.stereotype.Component;
 
+import com.easy_mart.landing.domain.LoginResult;
 import com.easy_mart.landing.domain.User;
 import com.easy_mart.landing.service.UserService;
 
@@ -52,4 +53,13 @@ public class UserEndPoint {
         userService.deleteUser(id);
         return Response.status(Response.Status.NO_CONTENT).build();
     }
+    
+    @GET
+    @Path("/check-login")
+    public LoginResult loging(@QueryParam("userEmailOrMobileNumber") String userEmailOrMobileNumber,@QueryParam("password")String password) {
+		return userService.checkUserLogin(userEmailOrMobileNumber,password);
+    	
+    }
+    
+    
 }

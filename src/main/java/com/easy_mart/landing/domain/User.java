@@ -1,4 +1,6 @@
 package com.easy_mart.landing.domain;
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -9,6 +11,8 @@ public class User {
     private String username;
     private String password;
     private String email;
+    private String mobileNumber;
+    private List <String> role;
 
     // Constructors
     public User() {}
@@ -51,4 +55,23 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+
+	public String getMobileNumber() {
+		return mobileNumber;
+	}
+
+	public void setMobileNumber(String mobileNumber) {
+		this.mobileNumber = mobileNumber;
+	}
+
+	public List<String> getRole() {
+		return role;
+	}
+
+	public void setRole(List<String> role) {
+		this.role = role;
+	}
+	
+	
+    
 }

@@ -17,8 +17,6 @@ public class Product {
     private int quantity;
     private String sellerId;
     private String imageUrl;
-    private String sellerId;
-    private String productCategory;
     private int quentity;
     private boolean isActive;
 
@@ -77,14 +75,7 @@ public class Product {
         this.brandName = brandName;
     }
 
-    public String getProductCategory() {
-        return productCategory;
-    }
-
-    public void setProductCategory(String productCategory) {
-        this.productCategory = productCategory;
-    }
-
+   
     public int getQuantity() {
         return quantity;
     }
@@ -93,14 +84,7 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public String getSellerId() {
-        return sellerId;
-    }
-
-    public void setSellerId(String sellerId) {
-        this.sellerId = sellerId;
-    }
-
+    
     public String getImageUrl() {
         return imageUrl;
     }

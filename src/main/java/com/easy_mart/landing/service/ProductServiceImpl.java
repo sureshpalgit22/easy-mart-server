@@ -42,4 +42,10 @@ public class ProductServiceImpl implements ProductService{
 		return product;
 	}
 
+	@Override
+	public String addProductDetails(List<Product> product) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

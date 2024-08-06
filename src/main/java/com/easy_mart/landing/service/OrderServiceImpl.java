@@ -37,10 +37,17 @@ public class OrderServiceImpl implements OrderService{
 				throw new OrderException("Order details can't be null");
 			}
 
-			if(Objects.nonNull(order))
-			{
+//			if(Objects.nonNull(order))
+//			{
+//				order.stream().forEach(ord->{
+//					ord.getUser().getRoles().contains("user")
+//					{
+//						
+//					}
+//					});
+//				});
 				orderRepository.saveAll(order);
-			}
+		//	}
 			return order;
 		}catch(Exception e) {
 			throw new OrderException(e.getMessage());

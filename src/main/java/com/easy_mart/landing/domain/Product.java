@@ -17,6 +17,10 @@ public class Product {
     private int quantity;
     private String sellerId;
     private String imageUrl;
+    private String sellerId;
+    private String productCategory;
+    private int quentity;
+    private boolean isActive;
 
     // Constructors
     public Product() {}
@@ -104,4 +108,38 @@ public class Product {
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
+
+	public String getSellerId() {
+		return sellerId;
+	}
+
+	public void setSellerId(String sellerId) {
+		this.sellerId = sellerId;
+	}
+
+	public String getProductCategory() {
+		return productCategory;
+	}
+
+	public void setProductCategory(String productCategory) {
+		this.productCategory = productCategory;
+	}
+
+	public int getQuentity() {
+		return quentity;
+	}
+
+	public void setQuentity(int quentity) {
+		this.quentity = quentity;
+	}
+
+	public boolean isActive() {
+		return isActive;
+	}
+
+	public void setActive(boolean isActive) {
+		this.isActive = isActive;
+	}
+    
+    
 }

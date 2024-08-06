@@ -1,4 +1,7 @@
 package com.easy_mart.landing.domain;
+import java.time.LocalDate;
+import java.util.List;
+
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
@@ -11,19 +14,53 @@ public class User {
     private String username;
     private String password;
     private String email;
+    
+    
+    //for saller
+    private String name;
+    private String mobile;
+    private List<String> roles;
+    private String panCard;
+    private Address sallerAddress;
+    private List<Address> userAddress;
+
+    private LocalDate dateOfBarth;
+
+
+
+    
     private String mobileNumber;
     private List <String> role;
 
     // Constructors
     public User() {}
 
-    public User(String username, String password, String email) {
-        this.username = username;
-        this.password = password;
-        this.email = email;
-    }
+   
+  
 
-    // Getters and Setters
+
+	public User(String id, String username, String password, String email, String name, String mobile,
+			List<String> roles, String panCard, Address sallerAddress, List<Address> userAddress,
+			LocalDate dateOfBarth) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.email = email;
+		this.name = name;
+		this.mobile = mobile;
+		this.roles = roles;
+		this.panCard = panCard;
+		this.sallerAddress = sallerAddress;
+		this.userAddress = userAddress;
+		this.dateOfBarth = dateOfBarth;
+	}
+
+
+
+
+
+	// Getters and Setters
     public String getId() {
         return id;
     }
@@ -55,6 +92,70 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+
+	public List<String> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<String> roles) {
+		this.roles = roles;
+	}
+
+	public String getPanCard() {
+		return panCard;
+	}
+
+	
+
+	public void setAddress(Address address) {
+		this.sallerAddress = address;
+	}
+
+	public Address getSallerAddress() {
+		return sallerAddress;
+	}
+
+
+	public void setSallerAddress(Address sallerAddress) {
+		this.sallerAddress = sallerAddress;
+	}
+
+
+	public List<Address> getUserAddress() {
+		return userAddress;
+	}
+
+
+	public void setUserAddress(List<Address> userAddress) {
+		this.userAddress = userAddress;
+	}
+
+
+	public LocalDate getDateOfBarth() {
+		return dateOfBarth;
+	}
+
+	public void setDateOfBarth(LocalDate dateOfBarth) {
+		this.dateOfBarth = dateOfBarth;
+	}
+    
+    
 
 	public String getMobileNumber() {
 		return mobileNumber;

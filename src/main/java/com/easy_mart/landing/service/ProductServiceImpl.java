@@ -1,5 +1,6 @@
 package com.easy_mart.landing.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -26,7 +27,7 @@ public class ProductServiceImpl implements ProductService{
     private UserRepository userRepository;
 	
 	@Override
-	public Product addOrUpdateProduct(Product product) {
+	public String addOrUpdateProduct(Product product) {
 		// TODO Auto-generated method stub
 		if(product!=null) {
 			if(product.getSellerId()==null) {
@@ -39,13 +40,21 @@ public class ProductServiceImpl implements ProductService{
 				throw new ProductException("No seller found given sellerId : "+product.getSellerId());
 			}
 		}
-		return product;
+		return "save successfully";
 	}
 
 	@Override
 	public String addProductDetails(List<Product> product) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<Product> getAllProducts() {
+		// TODO Auto-generated method stub
+		List<Product> products = new ArrayList<>();
+	 products= this.productRepository.findAll();
+		return products;
 	}
 
 }

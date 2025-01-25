@@ -13,6 +13,7 @@ public interface ProductService {
 	
 	String addProductDetails(List<Product> product);
 
-	Product addOrUpdateProduct(Product product);
+	String addOrUpdateProduct(Product product);
+	List<Product> getAllProducts();
 
 }

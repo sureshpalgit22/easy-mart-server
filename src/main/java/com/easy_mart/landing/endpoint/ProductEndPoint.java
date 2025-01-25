@@ -3,6 +3,7 @@ package com.easy_mart.landing.endpoint;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -28,12 +29,18 @@ public class ProductEndPoint {
 	ProductService productService;
 	
 	@POST
-	public SuccessMessage addProducts(List<Product> product)
+	public SuccessMessage addOrUpdateProduct(Product product)
 	{
 				
 		return SuccessMessage.statusCode(Status.OK)
-			.message(productService.addProductDetails(product)).build();
+			.message(productService.addOrUpdateProduct(product)).build();
 		
+	}
+	
+	@GET
+	@Path ("/getAllProducts")
+	public List<Product>  getAllProducts(){
+		return productService.getAllProducts();
 	}
 	
 	

@@ -16,14 +16,13 @@ public class Product {
     private String productCategory;
     private int quantity;
     private String sellerId;
-    private String imageUrl;
-    private int quentity;
+    private String image;
     private boolean isActive;
 
     // Constructors
     public Product() {}
 
-    public Product(String name, String description, BigDecimal price, String brandName, String productCategory, int quantity, String sellerId, String imageUrl) {
+    public Product(String name, String description, BigDecimal price, String brandName, String productCategory, int quantity, String sellerId, String image) {
         this.name = name;
         this.description = description;
         this.price = price;
@@ -31,7 +30,7 @@ public class Product {
         this.productCategory = productCategory;
         this.quantity = quantity;
         this.sellerId = sellerId;
-        this.imageUrl = imageUrl;
+        this.image = image;
     }
 
     // Getters and Setters
@@ -85,12 +84,12 @@ public class Product {
     }
 
     
-    public String getImageUrl() {
-        return imageUrl;
+    public String getImage() {
+        return image;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setImage(String image) {
+        this.image = image;
     }
 
 	public String getSellerId() {
@@ -109,13 +108,6 @@ public class Product {
 		this.productCategory = productCategory;
 	}
 
-	public int getQuentity() {
-		return quentity;
-	}
-
-	public void setQuentity(int quentity) {
-		this.quentity = quentity;
-	}
 
 	public boolean isActive() {
 		return isActive;

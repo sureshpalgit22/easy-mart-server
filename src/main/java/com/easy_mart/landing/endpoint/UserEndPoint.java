@@ -61,5 +61,11 @@ public class UserEndPoint {
     	
     }
     
+    @POST
+    @Path("/signup")
+    public String signUp(User user)
+    {
+    	return userService.signUp(user);
+    }
     
 }

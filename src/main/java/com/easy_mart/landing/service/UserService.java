@@ -17,4 +17,5 @@ public interface UserService {
 	User saveUser(User user);
 	void deleteUser(String id);
 	LoginResult checkUserLogin(String userEmailOrMobileNumber, String password);
+	String signUp(User user);
 }

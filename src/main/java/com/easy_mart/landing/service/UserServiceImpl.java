@@ -7,9 +7,11 @@ import javax.ws.rs.core.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
 
 import com.easy_mart.landing.domain.LoginResult;
 import com.easy_mart.landing.domain.User;
+import com.easy_mart.landing.exception.OrderException;
 import com.easy_mart.landing.exception.UserException;
 import com.easy_mart.landing.repository.UserRepository;
 
@@ -94,4 +96,34 @@ public class UserServiceImpl implements UserService {
     private boolean isValidEmailOrMobileNumber(String input) {
         return input.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$") || input.matches("^\\d{10}$");
     }
+
+	@Override
+	public String signUp(User user) {
+		
+		try {
+//		Assert.notNull(userName, "User Name shuld not be null");
+//		Assert.notNull(userEmail, "Email shuld not be null");
+//		Assert.notNull(password, "Password shuld not be null");
+//	//	Assert.notNull(confirmPassword, "Confirm password Name shuld not be null");
+//		Assert.notNull(roles, "Roles password Name shuld not be null");
+
+
+		
+		User newUser = new User();
+		newUser.setUsername(user.getUsername());
+		newUser.setEmail(user.getEmail());
+		newUser.setPassword(user.getPassword());
+		newUser.setRole(user.getRole());
+
+		
+		userRepository.save(newUser);
+		
+
+		return "New User Added Successfully";
+		}catch(Exception e)
+		{
+			throw new UserException(e.getMessage());
+		}
+		
+	}
 }

@@ -56,7 +56,7 @@ public class UserEndPoint {
     
     @GET
     @Path("/check-login")
-    public LoginResult loging(@QueryParam("userEmailOrMobileNumber") String userEmailOrMobileNumber,@QueryParam("password")String password) {
+    public User loging(@QueryParam("userEmailOrMobileNumber") String userEmailOrMobileNumber,@QueryParam("password")String password) {
 		return userService.checkUserLogin(userEmailOrMobileNumber,password);
     	
     }

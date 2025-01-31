@@ -78,19 +78,19 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public LoginResult checkUserLogin(String userEmailOrMobileNumber, String password) {
+    public User checkUserLogin(String userEmailOrMobileNumber, String password) {
         List<User> userList = userRepository.findAll();
         for (User user : userList) {
             if ((user.getEmail().equals(userEmailOrMobileNumber) || user.getMobileNumber().equals(userEmailOrMobileNumber)) && user.getPassword().equals(password)) {
-                return LoginResult.SUCCESS;
+                return user;
             }
         }
-        
-        if (!isValidEmailOrMobileNumber(userEmailOrMobileNumber)) {
-            return LoginResult.INVALID_EMAIL_OR_MOBILE_NUMBER;
-        } else {
-            return LoginResult.INVALID_PASSWORD;
-        }
+        return new User();
+//        if (!isValidEmailOrMobileNumber(userEmailOrMobileNumber)) {
+//            return LoginResult.INVALID_EMAIL_OR_MOBILE_NUMBER;
+//        } else {
+//            return LoginResult.INVALID_PASSWORD;
+//        }
     }
 
     private boolean isValidEmailOrMobileNumber(String input) {
